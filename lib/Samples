@@ -497,3 +497,65 @@ DropdownButton(
 ),
 
 42- checkboxListTile:
+ CheckboxListTile(
+    controlAffinity: ListTileControlAffinity.leading,
+    activeColor: Colors.red,
+    contentPadding: EdgeInsets.all(20),
+    title: Text("USA"),
+    subtitle: Text("america"),
+    secondary: Icon(Icons.flag),
+    value: usa,
+    isThreeLine: true,
+    selected: usa,
+    onChanged: (val) {
+        setState(() {
+        usa = val;
+        });
+    }
+)
+43- Radio:
+ Column(
+    children: [
+    Text(
+        "Choose Country",
+        style: TextStyle(
+        fontSize: 25,
+        ),
+    ),
+    Radio(
+        activeColor: Colors.red,
+        value: "usa",
+        groupValue: country,
+        onChanged: (value) {
+            setState(() {
+            country = value;
+            });
+        }),
+    Radio(
+        value: "bb",
+        groupValue: country,
+        onChanged: (value) {
+            setState(() {
+            country = value;
+            });
+        })
+    //it takes the whole parents width
+    ],
+    ),
+
+    44- RadioListTile:
+     RadioListTile(
+         //doesnt accept boolean like checkboxListTile
+        selected: country == "usa" ? true : false,
+        title: Text("usa"),
+        subtitle: Text("america"),
+        isThreeLine: true,
+        controlAffinity: ListTileControlAffinity.trailing,
+        activeColor: Colors.red,
+        value: "usa",
+        groupValue: country,
+        onChanged: (value) {
+            setState(() {
+            country = value;
+            });
+     }),
