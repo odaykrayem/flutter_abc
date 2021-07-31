@@ -8,7 +8,10 @@ class Test extends StatefulWidget {
 }
 
 class TestState extends State<Test> {
-  var selectedCountry;
+  bool usa = false;
+  bool sy = false;
+  bool sa = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,41 +19,51 @@ class TestState extends State<Test> {
         drawer: Drawer(),
         body: Center(
           child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 20),
-            padding: EdgeInsets.all(10),
-            color: Colors.indigo,
-            child: DropdownButton(
-              icon: Icon(
-                Icons.arrow_circle_down_rounded,
-                color: Colors.purple,
-                size: 30,
-              ),
-              // iconSize: 40,
-              // iconEnabledColor: Colors.red,
-              underline: Divider(
-                color: Colors.indigo,
-                thickness: 1,
-              ),
-              // isExpanded: true,
-              dropdownColor: Colors.indigo[200],
-              hint: Text("Choose country"),
-              items: [
-                "USA",
-                "Canada",
-              ]
-                  .map((e) => DropdownMenuItem(
-                        child: Text("$e"),
-                        value: e,
-                      ))
-                  .toList(),
-              onChanged: (val) {
-                setState(() {
-                  selectedCountry = val;
-                });
-              },
-              value: selectedCountry,
-            ),
-          ),
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              padding: EdgeInsets.all(10),
+              color: Colors.indigo,
+              child: Container(
+                padding: EdgeInsets.all(10),
+                child: Column(
+                  children: [
+                    Text(
+                      "Choose Country",
+                      style: TextStyle(
+                        fontSize: 25,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Text("USA"),
+                        Checkbox(
+                            activeColor: Colors.red,
+                            value: usa,
+                            onChanged: (val) {
+                              setState(() {
+                                usa = val;
+                              });
+                            }),
+                        Text("Saudia"),
+                        Checkbox(
+                            value: sa,
+                            onChanged: (val) {
+                              setState(() {
+                                sa = val;
+                              });
+                            }),
+                        Text("Syria"),
+                        Checkbox(
+                            value: sy,
+                            onChanged: (val) {
+                              setState(() {
+                                sy = val;
+                              });
+                            }),
+                      ],
+                    )
+                  ],
+                ),
+              )),
         ));
   }
 }

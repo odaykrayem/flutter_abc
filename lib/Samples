@@ -345,5 +345,155 @@ GestureDetector(
 
 37- StateFullWidget:
 
-38- DropDownButton:
+38-39- DropDownButton:
+DropdownButton(
+    elevation: 10,
+    itemHeight: 50,
+    onTap: () {
+    print("tap");
+    },
+    icon: Icon(
+    Icons.arrow_circle_down_rounded,
+    ),
+    iconSize: 40,
+    iconEnabledColor: Colors.red,
+    underline: Divider(
+    color: Colors.indigo,
+    thickness: 0,
+    ),
+    // isExpanded: true,
+    dropdownColor: Colors.indigo[200],
+    hint: Container(
+    padding: EdgeInsets.all(10),
+    child: Text(
+        "Choose country",
+        style: TextStyle(
+        color: Colors.white,
+        fontSize: 20,
+        ),
+        textAlign: TextAlign.center,
+    ),
+    ),
+    items: [
+    "USA",
+    "Canada",
+    ]
+        .map((e) => DropdownMenuItem(
+            child: Text(
+                "$e",
+                style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                ),
+                textAlign: TextAlign.center,
+            ),
+            value: e,
+            ))
+        .toList(),
+    onChanged: (val) {
+    setState(() {
+        selectedCountry = val;
+    });
+    },
+    value: selectedCountry,
+),
 
+
+40- DropDownButtonHideUnderline:
+  DropdownButtonHideUnderline(
+    child: DropdownButton(
+    elevation: 10,
+    itemHeight: 50,
+    onTap: () {
+        print("tap");
+    },
+    icon: Icon(
+        Icons.arrow_circle_down_rounded,
+    ),
+    iconSize: 40,
+    iconEnabledColor: Colors.red,
+    underline: Divider(
+        color: Colors.indigo,
+        thickness: 0,
+    ),
+    // isExpanded: true,
+    dropdownColor: Colors.indigo[200],
+    hint: Container(
+        padding: EdgeInsets.all(10),
+        child: Text(
+        "Choose country",
+        style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+        ),
+        textAlign: TextAlign.center,
+        ),
+    ),
+    items: [
+        "USA",
+        "Canada",
+    ]
+        .map((e) => DropdownMenuItem(
+                child: Text("$e",
+                style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+        ),
+        textAlign: TextAlign.center,),
+                value: e,
+            ))
+        .toList(),
+    onChanged: (val) {
+        setState(() {
+        selectedCountry = val;
+        });
+    },
+    value: selectedCountry,
+    ),
+),
+
+40- DropDownButtonField:
+ DropdownButtonFormField(),
+
+ 41- checkbox:
+  Column(
+    children: [
+    Text(
+        "Choose Country",
+        style: TextStyle(
+        fontSize: 25,
+        ),
+    ),
+    Row(
+        children: [
+        Text("USA"),
+        Checkbox(
+            activeColor: Colors.red,
+            value: usa,
+            onChanged: (val) {
+                setState(() {
+                usa = val;
+                });
+            }),
+        Text("Saudia"),
+        Checkbox(
+            value: sa,
+            onChanged: (val) {
+                setState(() {
+                sa = val;
+                });
+            }),
+        Text("Syria"),
+        Checkbox(
+            value: sy,
+            onChanged: (val) {
+                setState(() {
+                sy = val;
+                });
+            }),
+        ],
+    )
+    ],
+),
+
+42- checkboxListTile:
