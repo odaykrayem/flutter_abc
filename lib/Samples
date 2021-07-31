@@ -1,0 +1,349 @@
+//flutter run -d web-server --web-hostname=192.168.1.106 --web-port=5624 --local-engine=host_debug_unopt --profile -v lib\main.dart 
+
+20-21- Expanded:
+Expanded(
+flex: 1,
+    child: Container(
+        color: Colors.blue,
+        child: Text("Hello"),
+    ),
+),
+
+22-Icons:
+ Icon(
+    Icons.access_alarm_outlined,
+    size: 100,
+    color: Colors.lime,
+),
+
+//takes the whole container height
+//or the whole screen height if
+// container has no height
+23- divider:
+Divider(
+    height: 20,
+    thickness: 20,
+    color: Colors.lime,
+),
+
+23- vertical divider:
+ VerticalDivider(
+    width: 20,
+    thickness: 20,
+    color: Colors.lime,
+),
+
+25- padding:
+Padding(
+    padding: EdgeInsets.all(10),
+    child: Text("Feed")
+),
+
+26- Spacer:
+ Spacer(
+    flex: 2,
+),
+
+27- IndexedStack:
+IndexedStack(
+    index: 0,
+    children: [
+    Container(
+        //index = 0
+        color: Colors.red,
+    ),
+    Container(
+        //index = 1
+        color: Colors.green,
+    ),
+    Container(
+        //index = 2
+        color: Colors.blue,
+    ),
+    ],
+)
+
+//Wrap transfers widget to the next line or 
+//next column when space is not enough
+28- Wrap:
+Wrap(
+    direction: Axis.vertical,
+    children: [
+    Container(
+        margin: EdgeInsets.all(10),
+        width: 90,
+        height: 100,
+        color: Colors.red,
+    ),
+    Container(
+        margin: EdgeInsets.all(10),
+        width: 90,
+        height: 100,
+        color: Colors.green,
+    ),
+    Container(
+        margin: EdgeInsets.all(10),
+        width: 90,
+        height: 100,
+        color: Colors.blue,
+    ),
+    Container(
+        margin: EdgeInsets.all(10),
+        width: 90,
+        height: 100,
+        color: Colors.blue,
+    ),
+    Container(
+        margin: EdgeInsets.all(10),
+        width: 90,
+        height: 100,
+        color: Colors.blue,
+    ),
+    ],
+)
+
+29- Single Child ScrollView:
+
+//difference from list
+//view that this widget takes the width of its child unless i gave its
+//child's members the whole screen width
+SingleChildScrollView(
+//vertical for Column,
+    scrollDirection: Axis.vertical,
+    child: Column(
+    children: [
+        Container(
+        margin: EdgeInsets.all(10),
+        width: 90,
+        height: 100,
+        color: Colors.red,
+        ),
+        Container(
+        margin: EdgeInsets.all(10),
+        width: 90,
+        height: 100,
+        color: Colors.green,
+        ),
+        Container(
+        margin: EdgeInsets.all(10),
+        width: 90,
+        height: 100,
+        color: Colors.blue,
+        ),
+        Container(
+        margin: EdgeInsets.all(10),
+        width: 90,
+        height: 100,
+        color: Colors.blue,
+        ),
+    ],
+    ),
+)
+
+30- SizedBox:
+//it can be used for separeting row\column members
+//by using sizedBox with width\height
+//it can be used as container
+//but doesnt accept color
+//difference from container that
+//container take the whole width\height
+//of its parent if it has no child or 
+//we didnt determine its width\height
+
+SizedBox(
+width: 90,
+height: 100,
+child: Container(
+    child: Text("hello"),
+    margin: EdgeInsets.all(10),
+    color: Colors.red,
+),),
+
+31- Center:
+
+Container(
+    width: 100, 
+    height: 100, 
+    child: Center(
+        child: Text("jj")
+)));
+
+32- RaisedButton: (Deprecated):
+RaisedButton(
+    elevation: 20,
+    textColor: Colors.black,
+    //when button is disapled
+    disabledColor: Colors.amber,
+    disabledElevation: 20,
+    disabledTextColor: Colors.white,
+    ////
+    color: Colors.green[100],
+    padding: EdgeInsets.all(10),
+    splashColor: Colors.teal,
+    onLongPress: () {
+        print("Long pressed");
+    },
+    onPressed: () {
+        print("pressed");
+    },
+    child: Text("jj")
+),
+
+33- ElevatedButton:
+ElevatedButton(
+    style: ElevatedButton.styleFrom(
+        primary: Colors.yellow,
+        padding: EdgeInsets.all(10),
+        elevation: 100,
+        shadowColor: Colors.cyan,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30)),
+        textStyle: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+        )),
+    onLongPress: () {
+        print("Long pressed");
+    },
+    onPressed: () {
+        print("pressed");
+    },
+    child: Text("jj")
+),
+
+33- ElevatedButton.Icon:
+ ElevatedButton.styleFrom(
+        primary: Colors.yellow,
+        padding: EdgeInsets.all(10),
+        elevation: 100,
+        shadowColor: Colors.cyan,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30)),
+        textStyle: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+        )),
+    onLongPress: () {
+    print("Long pressed");
+    },
+    onPressed: () {
+    print("pressed");
+    },
+),
+
+33- Normal ElevatedButton with Icon:
+ ElevatedButton(
+    child: Row(
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    children: [Icon(Icons.home), Text("click")],
+    ),
+    style: ElevatedButton.styleFrom(
+        primary: Colors.yellow,
+        padding: EdgeInsets.all(10),
+        elevation: 100,
+        shadowColor: Colors.cyan,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30)),
+        textStyle: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+        )),
+    onLongPress: () {
+    print("Long pressed");
+    },
+    onPressed: () {
+    print("pressed");
+    },
+),
+
+33- MaterialButton:
+ MaterialButton(
+    child: Text("click"),
+    color: Colors.cyan,
+    shape: Border.all(
+    color: Colors.black,
+    width: 4,
+    ),
+    elevation: 10,
+    splashColor: Colors.deepOrange,
+    textColor: Colors.black,
+    height: 20,
+    minWidth: 100,
+    onLongPress: () {
+    print("Long pressed");
+    },
+    onPressed: () {
+    print("pressed");
+    },
+),
+
+33- TextButton:
+ //it has no shadow
+TextButton(
+    style: TextButton.styleFrom(
+     primary: Colors.cyan,
+    ),
+    child: Text("click"),
+    onLongPress: () {
+     print("Long pressed");
+    },
+    onPressed: () {
+     print("pressed");
+    },
+),
+
+34- IconButton:
+IconButton(
+//    iconSize: 50,
+ //   color: Colors.red,
+    icon: Icon(Icons.vibration_sharp,
+      color:Colors.red,
+      size:50,
+    ),
+    onPressed: () {},
+),
+
+34- InkWell:
+InkWell(
+    child: Image.asset("images/img.jpg"),
+    onTap: () {},
+)
+
+35- FloatingActionButton:
+ floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          backgroundColor: Colors.blueAccent,
+          child: Icon(Icons.access_alarms_outlined),
+),
+
+36- GestureDetector:
+GestureDetector(
+    child: Text("im"),
+    onTap: () {},
+    onTapUp: (tap) {
+        print("up");
+    },
+    onTapDown: (tap) {
+        print("down");
+    },
+    onTapCancel: () {
+        print("cancel");
+    },
+    // onLongPress: () {
+    //   print("long pressed");
+    // },
+    onLongPressStart: (press) {
+        print("long pressed start");
+    },
+    onLongPressEnd: (press) {
+        print("long pressed end");
+    },
+    onDoubleTap: () {
+        print("double tap");
+    },
+)
+
+37- StateFullWidget:
+
+38- DropDownButton:
+
