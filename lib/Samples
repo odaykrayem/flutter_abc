@@ -799,3 +799,114 @@ ListView(
         ),
 
 ])
+
+54- ListView.Builder:
+ListView.builder(
+    itemCount: mobile.length,
+    itemBuilder: (context, i) {
+    return ListTile(
+        title: Text("${mobile[i]['name']}"),
+        subtitle: Text("${mobile[i]['cpu']}"),
+        trailing: Text("${mobile[i]['screen']}"),
+    );
+})
+
+55- ListView.separeted:
+ ListView.separated(
+    separatorBuilder: (context, i) {
+    return Divider(
+        color: Colors.red,
+        thickness: 2,
+        height: 2,
+    );
+    },
+    itemCount: mobile.length,
+    itemBuilder: (context, i) {
+    return ListTile(
+        title: Text("${mobile[i]['name']}"),
+        subtitle: Text("${mobile[i]['cpu']}"),
+        trailing: Text("${mobile[i]['screen']}"),
+    );
+})
+
+56- GridView.builder:
+Container(
+child: GridView.builder(
+    // scrollDirection: Axis.horizontal,
+    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 4,
+    crossAxisSpacing: 3,
+    mainAxisSpacing: 3,
+ //change the raio beween width and height of the item
+    childAspectRatio: 1.5,
+    ),
+    itemCount: mobile.length,
+    itemBuilder: (context, i) {
+    return Container(
+        color: Colors.cyan,
+        // margin: EdgeInsets.all(5),
+        child: ListTile(
+        title: Text("${mobile[i]['name']}"),
+        subtitle: Text("${mobile[i]['cpu']}"),
+        ),
+    );
+}))
+57- GridView:
+Container(
+        child: GridView(
+    // scrollDirection: Axis.horizontal,
+    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 3,
+        mainAxisSpacing: 3,
+        //change the raio beween width and height of the item
+        childAspectRatio: 1.5,
+    ),
+    children: [
+        Container(
+        child: Text("c1"),
+        color: Colors.amber,
+        height: 100,
+        ),
+        Container(
+        child: Text("c1"),
+        color: Colors.blue,
+        height: 100,
+        ),
+    ],
+))
+
+58- List.generate:
+ GridView(
+    // scrollDirection: Axis.horizontal,
+    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 2,
+    crossAxisSpacing: 3,
+    mainAxisSpacing: 3,
+    //change the raio beween width and height of the item
+    childAspectRatio: 1.5,
+    ),
+    //List.generate is loop just like builder
+    children: List.generate(mobile.length, (index) {
+    return Container(
+        child: Text("Container: ${mobile[index]}"),
+    );
+}))
+59- GridView.count:
+GridView.count(
+    // scrollDirection: Axis.horizontal,
+    crossAxisCount: 2,
+    children: [
+    Container(
+        color: Colors.amber,
+        child: Text("one"),
+    ),
+    Container(
+        color: Colors.yellow,
+        child: Text("one"),
+    ),
+    Container(
+        color: Colors.red,
+        child: Text("one"),
+    ),
+])

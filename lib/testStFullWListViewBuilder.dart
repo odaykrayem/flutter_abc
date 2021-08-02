@@ -14,6 +14,8 @@ class TestState extends State<Test> {
   List mobile = [
     {"name": "s20 ultra", "screen": "4.3", "cpu": "8 core"},
     {"name": "s21 ultra", "screen": "4.3", "cpu": "8 core"},
+    {"name": "s22 ultra", "screen": "4.3", "cpu": "8 core"},
+    {"name": "s22 ultra", "screen": "4.3", "cpu": "8 core"},
     {"name": "s22 ultra", "screen": "4.3", "cpu": "8 core"}
   ];
   @override
@@ -23,15 +25,23 @@ class TestState extends State<Test> {
       appBar: AppBar(),
       drawer: Drawer(),
       body: Container(
-          child: ListView.builder(
-              itemCount: mobile.length,
-              itemBuilder: (context, i) {
-                return ListTile(
-                  title: Text("${mobile[i]['name']}"),
-                  subtitle: Text("${mobile[i]['cpu']}"),
-                  trailing: Text("${mobile[i]['screen']}"),
-                );
-              })),
+          child: GridView.count(
+              // scrollDirection: Axis.horizontal,
+              crossAxisCount: 2,
+              children: [
+            Container(
+              color: Colors.amber,
+              child: Text("one"),
+            ),
+            Container(
+              color: Colors.yellow,
+              child: Text("one"),
+            ),
+            Container(
+              color: Colors.red,
+              child: Text("one"),
+            ),
+          ])),
     );
   }
 }
