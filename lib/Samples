@@ -211,8 +211,9 @@ ElevatedButton(
     child: Text("jj")
 ),
 
-33- ElevatedButton.Icon:
- ElevatedButton.styleFrom(
+33- ElevatedButton.icon:
+ icon: Icon(Icon(Icons.home)),
+ style: ElevatedButton.styleFrom(
         primary: Colors.yellow,
         padding: EdgeInsets.all(10),
         elevation: 100,
@@ -543,19 +544,258 @@ DropdownButton(
     ],
     ),
 
-    44- RadioListTile:
-     RadioListTile(
-         //doesnt accept boolean like checkboxListTile
-        selected: country == "usa" ? true : false,
-        title: Text("usa"),
-        subtitle: Text("america"),
-        isThreeLine: true,
-        controlAffinity: ListTileControlAffinity.trailing,
-        activeColor: Colors.red,
-        value: "usa",
-        groupValue: country,
-        onChanged: (value) {
-            setState(() {
-            country = value;
-            });
-     }),
+44- RadioListTile:
+RadioListTile(
+        //doesnt accept boolean like checkboxListTile
+    selected: country == "usa" ? true : false,
+    title: Text("usa"),
+    subtitle: Text("america"),
+    isThreeLine: true,
+    controlAffinity: ListTileControlAffinity.trailing,
+    activeColor: Colors.red,
+    value: "usa",
+    groupValue: country,
+    onChanged: (value) {
+        setState(() {
+        country = value;
+        });
+}),
+45- switch:
+Switch(
+    activeColor: Colors.red,
+    activeTrackColor: Colors.orange,
+    inactiveThumbColor: Colors.cyan,
+    inactiveTrackColor: Colors.cyanAccent[700],
+    value: notify,
+    onChanged: (val) {
+        setState(() {
+        notify = val;
+        });
+}),
+46- SwitchListTile:
+SwitchListTile(
+    title: Text("Choose"),
+    subtitle: Text("cc"),
+    secondary: Icon(Icons.switch_camera),
+    isThreeLine: true,
+    controlAffinity: ListTileControlAffinity.trailing,
+    activeColor: Colors.red,
+    activeTrackColor: Colors.orange,
+    inactiveThumbColor: Colors.cyan,
+    inactiveTrackColor: Colors.cyanAccent[700],
+    value: notify,
+    onChanged: (val) {
+        setState(() {
+        notify = val;
+        });
+}),
+
+47- ListTile:
+Container(
+    color: Colors.red,
+    child: ListTile(
+    title: Text("Choose"),
+    subtitle: Text("cc"),
+    leading: Icon(Icons.notification_important),
+    trailing: Text("price"),
+    onTap: () {
+        print("ListTile");
+    },
+    onLongPress: () {
+        print("long pressed");
+    },
+    //widget color stronger than parent color
+    tileColor: Colors.cyan,
+    isThreeLine: true,
+    ),
+),
+
+48- SnackBar: (Depracated)
+GlobalKey<ScaffoldState> scfKey = new GlobalKey<ScaffoldState>();
+
+@override
+Widget build(BuildContext context) {
+return Scaffold(
+key: scfKey,
+appBar: AppBar(),
+drawer: Drawer(),
+body: Center(
+  child: Container(
+      margin: EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.all(10),
+      child: Container(
+        width: 400,
+        height: 200,
+        padding: EdgeInsets.all(10),
+        child: ElevatedButton(
+                child: Text("show snackbar"),
+                onPressed: () {
+                  scfKey.currentState.showSnackBar(
+                    SnackBar(
+                      content: Text("snack bar"),
+                      duration: Duration(seconds: 1),
+                      backgroundColor: Colors.red[100],
+                      //this should be used with floating behavior
+                      margin: EdgeInsets.all(10),
+                      behavior: SnackBarBehavior.floating,
+                      action: SnackBarAction(
+                        label: "Close",
+                        textColor: Colors.red[100],
+                        onPressed: (){
+                          print("close");
+                        },
+                      ),
+                      onVisible: (){
+                        print("show");
+                      },
+
+                    ),
+                  );
+                },
+              ),
+      )),
+));
+
+50-51: AlertDialog:
+AlertDialog(
+    actions: [
+      FlatButton(
+          color: Colors.blueAccent,
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: Text("Ok")),
+      ElevatedButton(
+        child: Row(
+          mainAxisAlignment:
+              MainAxisAlignment.spaceAround,
+          children: [Icon(Icons.home), Text("cancel")],
+        ),
+        style: ElevatedButton.styleFrom(
+            primary: Colors.yellow,
+            padding: EdgeInsets.all(10),
+            elevation: 100,
+            shadowColor: Colors.cyan,
+            shape: RoundedRectangleBorder(
+                borderRadius:
+                    BorderRadius.circular(30)),
+            textStyle: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            )),
+        onPressed: () {
+          print("pressed");
+          Navigator.of(context).pop();
+        },
+      ),
+    ],
+    title: Text("Dialog"),
+    // backgroundColor: Colors.red[400],
+    content:
+        Text("content content content content content"),
+    // titlePadding: EdgeInsets.only(bottom: 10),
+    // contentPadding: EdgeInsets.all(20),
+    // actionsPadding: EdgeInsets.all(20),
+    ////this property give padding for FlatButton Only//
+    buttonPadding: EdgeInsets.all(30),
+    contentTextStyle: TextStyle(
+      color: Colors.redAccent,
+      fontSize: 20,
+    ),
+    titleTextStyle: TextStyle(
+      color: Colors.cyanAccent,
+      fontSize: 20,
+    ),
+  );
+});
+
+52- ListView:
+//on Axis.Vertical sons can use
+//  height and take the whole screen widht always
+//on Axis.Horizontal sons can use width
+//and they take the whole screen height always
+//we put ListView inside a container to avoid taht
+ListView(
+    //default
+    // physics: ClampingScrollPhysics(),
+    physics: BouncingScrollPhysics(),
+    //// this used when we have nested listview 
+    ////and we have to give the insider listview specfic height\width
+    ////or use shrinkwrap
+    // physics: NeverScrollableScrollPhysics(),
+    padding: EdgeInsets.all(10),
+    //reverse th arrangment of childrens
+    reverse: true,
+    ////make the listview takes its child whieght\width
+    ////useful when listview is inside onothe listview
+    shrinkWrap: false,
+    scrollDirection: Axis.vertical,
+    children: [
+    Container(
+    height: 300,
+    color: Colors.red,
+    ),
+    Container(
+    height: 300,
+    color: Colors.amber,
+    ),
+    Container(
+    height: 300,
+    color: Colors.blueGrey,
+    )
+])
+53- Nested ListViews:
+ ListView(
+    //default
+    // physics: ClampingScrollPhysics(),
+    physics: BouncingScrollPhysics(),
+    // physics: NeverScrollableScrollPhysics(),
+    padding: EdgeInsets.all(10),
+    //reverse th arrangment of childrens
+    // reverse: true,
+    scrollDirection: Axis.vertical,
+    children: [
+        Container(
+        height: 210,
+        child: ListView(shrinkWrap: true, children: [
+            Container(
+            height: 200,
+            color: Colors.blueAccent,
+            ),
+            Container(
+            height: 200,
+            color: Colors.pink,
+            ),
+            Container(
+            height: 200,
+            color: Colors.purple,
+            )
+        ]),
+        ),
+        Container(
+        height: 210,
+        child: ListView(
+            shrinkWrap: true,
+            reverse: false,
+            scrollDirection: Axis.vertical,
+            children: [
+                Container(
+                height: 200,
+                color: Colors.cyan,
+                ),
+                Container(
+                height: 200,
+                color: Colors.brown,
+                ),
+                Container(
+                height: 200,
+                color: Colors.black,
+                )
+            ]),
+        ),
+        Container(
+        height: 300,
+        color: Colors.amber,
+        ),
+
+])

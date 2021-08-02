@@ -10,10 +10,12 @@ class Test extends StatefulWidget {
 }
 
 class TestState extends State<Test> {
-  String country;
-  bool notify = false;
   GlobalKey<ScaffoldState> scfKey = new GlobalKey<ScaffoldState>();
-
+  List mobile = [
+    {"name": "s20 ultra", "screen": "4.3", "cpu": "8 core"},
+    {"name": "s21 ultra", "screen": "4.3", "cpu": "8 core"},
+    {"name": "s22 ultra", "screen": "4.3", "cpu": "8 core"}
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,10 +24,12 @@ class TestState extends State<Test> {
       drawer: Drawer(),
       body: Container(
           child: ListView.builder(
-              itemCount: 5,
+              itemCount: mobile.length,
               itemBuilder: (context, i) {
-                return Container(
-                  child: Text("$i"),
+                return ListTile(
+                  title: Text("${mobile[i]['name']}"),
+                  subtitle: Text("${mobile[i]['cpu']}"),
+                  trailing: Text("${mobile[i]['screen']}"),
                 );
               })),
     );
