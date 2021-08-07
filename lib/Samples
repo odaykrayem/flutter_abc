@@ -910,3 +910,24 @@ GridView.count(
         child: Text("one"),
     ),
 ])
+
+60- AppBar:
+appBar: AppBar(
+    elevation: 15,
+    shadowColor: Colors.red[100],
+    backgroundColor: Colors.red[100],
+    //colors of icons in the statusbar default is dark
+    brightness: Brightness.light,
+    actions: [
+    IconButton(icon: Icon(Icons.exit_to_app), onPressed: () {}),
+    IconButton(icon: Icon(Icons.alarm_add), onPressed: () {})
+    ],
+    title: Text(title),
+    centerTitle: true,
+    leading: IconButton(
+    icon: Icon(Icons.arrow_back),
+    onPressed: () {},
+    ),
+    leadingWidth: 5,
+),
+61-62- Drawer:
