@@ -21,6 +21,9 @@ class MyDrawer extends StatelessWidget {
           title: Text(title),
           centerTitle: true,
         ),
+        drawerScrimColor: Colors.blue.withOpacity(0.3),
+        // drawerScrimColor: Colors.transparent,
+
         drawer: Drawer(
           child: Column(
             children: [

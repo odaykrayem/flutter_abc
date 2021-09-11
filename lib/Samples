@@ -931,3 +931,216 @@ appBar: AppBar(
     leadingWidth: 5,
 ),
 61-62- Drawer:
+drawerScrimColor: Colors.blue.withOpacity(0.3),
+// drawerScrimColor: Colors.transparent,
+
+drawer: Drawer(
+    child: Column(
+    children: [
+        UserAccountsDrawerHeader(
+        accountName: Text("Oday"),
+        accountEmail: Text("Oday@gmail.com"),
+        arrowColor: Colors.amberAccent,
+        currentAccountPicture: CircleAvatar(
+            backgroundColor: Colors.pink,
+        ),
+        ),
+        ListTile(
+        title: Text("Home Page"),
+        leading: Icon(Icons.home),
+        )
+    ],
+    ),
+),
+
+63- TabBarView:
+return DefaultTabController(
+    length: 2,
+    child: Scaffold(
+    key: scfKey,
+    appBar: AppBar(),
+    drawer: Drawer(),
+    body: TabBarView(
+        children: [
+        Container(
+            color: Colors.red,
+            child: Text("1"),
+        ),
+        Container(
+            color: Colors.blue,
+            child: Text("2"),
+        ),
+        ],
+    ),
+    ),
+);
+
+64- tabBar and tabs:
+return DefaultTabController(
+    length: 5,
+    child: Scaffold(
+    key: scfKey,
+    appBar: AppBar(
+        bottom: TabBar(
+            // isScrollable: true,
+            indicatorColor: Colors.red,
+            indicatorWeight: 7,
+            indicatorPadding: EdgeInsets.all(5),
+            labelColor: Colors.purple,
+            onTap: (index) {},
+            labelStyle: TextStyle(
+                letterSpacing: 2,
+            ),
+            tabs: [
+            Tab(
+            child: Text("hi"),
+            icon: Icon(Icons.date_range_sharp),
+            ),
+            Tab(
+            child: Text("Two"),
+            ),
+            Tab(
+            child: Text("three"),
+            ),
+            Tab(
+            child: Text("three"),
+            ),
+            Tab(
+            child: Text("three"),
+            ),
+        ])),
+    body: TabBarView(
+        children: [
+        Container(
+            color: Colors.red,
+            child: Text("1"),
+        ),
+        Container(
+            color: Colors.blue,
+            child: Text("2"),
+        ),
+        Container(
+            color: Colors.pink,
+            child: Text("2"),
+        ),
+        Container(
+            color: Colors.pink,
+            child: Text("2"),
+        ),
+        Container(
+            color: Colors.pink,
+            child: Text("2"),
+        ),
+        ],
+    ),
+    ),
+);
+
+65- TabController:
+class TabControllerOState extends State<TabControllerO>
+    with SingleTickerProviderStateMixin {
+  TabController myController;
+
+  @override
+  void initState() {
+    myController = new TabController(length: 2, vsync: this, initialIndex: 1);
+    super.initState();
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+          bottom: TabBar(controller: myController, onTap: (index) {}, tabs: [
+        Tab(
+          child: Text("hi"),
+          icon: Icon(Icons.date_range_sharp),
+        ),
+        Tab(
+          child: Text("Two"),
+        ),
+      ])),
+      drawer: Drawer(),
+      body: TabBarView(
+        controller: myController,
+        children: [
+          Container(
+            color: Colors.red,
+            child: Text("1"),
+          ),
+          Container(
+            color: Colors.blue,
+            child: Text("2"),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+66-BottomNavigationBar:
+    bottomNavigationBar: BottomNavigationBar(
+    backgroundColor: Colors.cyan,
+    currentIndex: selectedIndex,
+    // selectedItemColor: Colors.red,
+    unselectedItemColor: Colors.white,
+    selectedLabelStyle: TextStyle(
+        fontSize: 20,
+        //color does not work here
+        color: Colors.black,
+    ),
+    unselectedFontSize: 13,
+    iconSize: 15,
+    // selectedFontSize: 18,
+    items: [
+        BottomNavigationBarItem(icon: Icon(Icons.alarm), label: "Widget"),
+        BottomNavigationBarItem(icon: Icon(Icons.alarm), label: "w"),
+    ],
+    onTap: (index) {
+        print("in");
+        print(index);
+
+        setState(() {
+        selectedIndex = index;
+        });
+    },
+),
+
+67-PageView:
+ @override
+  void initState() {
+    // TODO: implement initState
+    pc = new PageController(
+      initialPage: 1,
+      // viewportFraction: 0.5
+    );
+    super.initState();
+}
+Column(
+    children: [
+    Container(
+        height: 300,
+        child: PageView(
+        // reverse: true,
+        // scrollDirection: Axis.vertical,
+        children: [
+            Container(
+            color: Colors.red,
+            child: Text("hh"),
+            ),
+            Container(
+            color: Colors.blue,
+            child: Text("hh"),
+            ),
+        ],
+        onPageChanged: (index) {
+            print(index);
+        },
+        controller: pc,
+        ),
+    )
+],
+)
+68-PageViewBuilder:
+
+
+
